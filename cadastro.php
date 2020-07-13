@@ -45,7 +45,7 @@
  
 <div class="card-body">
                 <form method="POST" action="salvar.php">    
-                   <input type="hidden" name="codcontato" value="<?php echo $row_usuario['codcontato']; ?>">
+                   <?php include('errors.php');?>
                 <input type="hidden">
                 <label class="control-label">Nome</label><br>
                 <div class="input-group form-group">
