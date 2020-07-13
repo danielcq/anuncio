@@ -1,12 +1,3 @@
-<?php
-session_start();
-include_once("banco.php");
-$codcontato = filter_input(INPUT_GET, 'codcontato', FILTER_SANITIZE_NUMBER_INT);
-$result_usuario = "SELECT * FROM cadastro WHERE codcontato = '$codcontato'";
-$resultado_usuario = mysqli_query($con, $result_usuario);
-$row_usuario = mysqli_fetch_assoc($resultado_usuario);
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
