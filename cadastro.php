@@ -1,3 +1,12 @@
+<?php
+session_start();
+include_once("banco.php");
+$codcontato = filter_input(INPUT_GET, 'codcontato', FILTER_SANITIZE_NUMBER_INT);
+$result_usuario = "SELECT * FROM cadastro WHERE codcontato = '$codcontato'";
+$resultado_usuario = mysqli_query($con, $result_usuario);
+$row_usuario = mysqli_fetch_assoc($resultado_usuario);
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -10,7 +19,7 @@
     <link rel="stylesheet" href="css/font-awesome.min.css">
 </head>
   <body>
-    <nav class="navbar navbar-expand-md navbar navbar-dark fixed-top">
+    <nav class="navbar navbar-expand-md navbar navbar-dark fixed-top"style="background-color: black;">
    <a class="navbar-brand" href="#">Projeto</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alterna navegação">
     <span class="navbar-toggler-icon"></span>
@@ -18,10 +27,10 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">     
       <li class="nav-item">
-        <a class="nav-link active" href="cadastro.php">Cadastrar</a>
+        <a class="nav-link" href="cadastro.php">Cadastrar</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="editar.php">Editar</a>
+        <a class="nav-link active" href="editar.php">Editar</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="exibir.php">Relatório</a>
@@ -30,11 +39,12 @@
     </ul>
   </div>    
   </nav>
+
 <div class="container">
     <div class="d-flex justify-content-center h-100">
         <div class="card">
             <div class="card-header">
-                <h3>Cadastrar</h3>
+                <h2>Editar Usuário</h2>
                 <div class="d-flex justify-content-end social_icon">
                     <span><i class="fab fa-facebook-square"></i></span>
                     <span><i class="fab fa-google-plus-square"></i></span>
@@ -43,49 +53,54 @@
   
  
 <div class="card-body">
-                <form method="POST" action="salvar.php">
+                <form method="POST" action="atualiza.php">
+                <input type="hidden" name="codcontato" value="<?php echo $row_usuario['codcontato']; ?>">    
                 <label class="control-label">Nome</label><br>
                 <div class="input-group form-group">
                 <div class="input-group-prepend">
                    <span class="input-group-text"><i class="fas fa-key"></i></span>
                 </div>
-                      </div>
-                   <input type="text" class="form-control" name="nome" placeholder="Digite seu nome" required="required"><br><br>
+                    <input type="text" class="form-control" name="nome" value="<?php echo $row_usuario['nome']; ?>" required="required"><br><br>
                 </div>
                 <label class="control-label">Sexo</label><br>
                 <div class="input-group form-group">
                 <div class="input-group-prepend">
                    <span class="input-group-text"><i class="fas fa-key"></i></span>
                 </div>
-                     </div>
-                   <select class="form-control" name="sexo" id="teste" required="required">
-                         <option value="" selected>Selecione</option>
-                         <option value="Masculino">Masculino</option>
-                         <option value="Feminino">Feminino</option>
-                   </select>
+                <select class="form-control" name="sexo" required="required">
+                    <?php
+                        $result_niveis_acessos = "SELECT * FROM cadastro WHERE codcontato = '$codcontato'";
+                        $resultado_niveis_acesso = mysqli_query($con, $result_niveis_acessos);
+                        while($row_niveis_acessos = mysqli_fetch_assoc($resultado_niveis_acesso)){ ?>
+                            <option><?php echo $row_niveis_acessos['sexo']; ?></option> <?php
+                        }
+                    ?>
+                     <option value="Masculino">Masculino</option>
+                     <option value="Feminino">Feminino</option>
+                </select><br><br>
                 </div>
                 <label class="control-label">Cidade</label><br>
                 <div class="input-group form-group">
                 <div class="input-group-prepend">
                    <span class="input-group-text"><i class="fas fa-key"></i></span>
                 </div>
-                    <input type="text" class="form-control" name="cidade" placeholder="Digite a cidade" required="required">
+                    <input type="text" class="form-control" name="cidade" value="<?php echo $row_usuario['cidade']; ?>" required="required"><br><br>
                 </div>
                 <label class="control-label">Data</label><br>
                 <div class="input-group form-group">
                 <div class="input-group-prepend">
                    <span class="input-group-text"><i class="fas fa-key"></i></span>
                 </div>
-                   <input id="date" class="form-control" name="data" type="date" required="required"><br><br>
+                    <input type="date" class="form-control" name="data" value="<?php echo $row_usuario['data']; ?>" required="required"><br><br>
                 </div>
                 <div class="form-group">
-                        <input type="submit" value="Cadastrar" class="btn btn-info login_btn">
+                        <input type="submit" value="Atualizar" class="btn btn-info login_btn">
                 </div>             
                 </form>
             </div>
          </div>
       </div>
-    </div>          
+ </div>          
  </div>                       
       
 <footer>
@@ -105,12 +120,14 @@
                   </div>
               </div>
 </footer>      
+
 <script type="text/javascript">
        document.getElementById('teste')[0].selected = "selected"; 
 </script>
             
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="js/bootstrap.min.js"></script>
-</body>
+  
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
 </html>
