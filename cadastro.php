@@ -57,6 +57,7 @@
                 <div class="input-group-prepend">
                    <span class="input-group-text"><i class="fas fa-key"></i></span>
                 </div>
+                     </div>
                    <select class="form-control" name="sexo" id="teste" required="required">
                          <option value="" selected>Selecione</option>
                          <option value="Masculino">Masculino</option>
