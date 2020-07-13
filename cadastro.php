@@ -44,7 +44,7 @@
   
  
 <div class="card-body">
-                <form method="POST" action="atualiza.php">
+                <form method="POST" action="salvar.php">
                 <input type="hidden" name="codcontato" value="<?php echo $row_usuario['codcontato']; ?>">    
                 <label class="control-label">Nome</label><br>
                 <div class="input-group form-group">
@@ -58,14 +58,7 @@
                 <div class="input-group-prepend">
                    <span class="input-group-text"><i class="fas fa-key"></i></span>
                 </div>
-                <select class="form-control" name="sexo" required="required">
-                    <?php
-                        $result_niveis_acessos = "SELECT * FROM cadastro WHERE codcontato = '$codcontato'";
-                        $resultado_niveis_acesso = mysqli_query($con, $result_niveis_acessos);
-                        while($row_niveis_acessos = mysqli_fetch_assoc($resultado_niveis_acesso)){ ?>
-                            <option><?php echo $row_niveis_acessos['sexo']; ?></option> <?php
-                        }
-                    ?>
+                <select class="form-control" name="sexo" required="required">                 
                      <option value="Masculino">Masculino</option>
                      <option value="Feminino">Feminino</option>
                 </select><br><br>
