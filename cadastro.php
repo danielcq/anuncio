@@ -51,7 +51,7 @@
                 <div class="input-group-prepend">
                    <span class="input-group-text"><i class="fas fa-key"></i></span>
                 </div>
-                    <input type="text" class="form-control" name="nome" value="<?php echo $row_usuario['nome']; ?>" required="required"><br><br>
+                    <input type="text" class="form-control" name="nome" required="required"><br><br>
                 </div>
                 <label class="control-label">Sexo</label><br>
                 <div class="input-group form-group">
@@ -68,14 +68,14 @@
                 <div class="input-group-prepend">
                    <span class="input-group-text"><i class="fas fa-key"></i></span>
                 </div>
-                    <input type="text" class="form-control" name="cidade" value="<?php echo $row_usuario['cidade']; ?>" required="required"><br><br>
+                    <input type="text" class="form-control" name="cidade" required="required"><br><br>
                 </div>
                 <label class="control-label">Data</label><br>
                 <div class="input-group form-group">
                 <div class="input-group-prepend">
                    <span class="input-group-text"><i class="fas fa-key"></i></span>
                 </div>
-                    <input type="date" class="form-control" name="data" value="<?php echo $row_usuario['data']; ?>" required="required"><br><br>
+                    <input type="date" class="form-control" name="data" required="required"><br><br>
                 </div>
                 <div class="form-group">
                         <input type="submit" value="Atualizar" class="btn btn-info login_btn">
