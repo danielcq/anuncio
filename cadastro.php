@@ -49,6 +49,7 @@
                 <div class="input-group-prepend">
                    <span class="input-group-text"><i class="fas fa-key"></i></span>
                 </div>
+                      </div>
                    <input type="text" class="form-control" name="nome" placeholder="Digite seu nome" required="required"><br><br>
                 </div>
                 <label class="control-label">Sexo</label><br>
