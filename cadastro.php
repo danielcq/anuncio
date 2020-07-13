@@ -35,17 +35,18 @@
     <div class="d-flex justify-content-center h-100">
         <div class="card">
             <div class="card-header">
-                <h2>Editar Usuário</h2>
+                <h2>Editar Usuário</h2>            
                 <div class="d-flex justify-content-end social_icon">
-                    <span><i class="fab fa-facebook-square"></i></span>
-                    <span><i class="fab fa-google-plus-square"></i></span>
-                    <span><i class="fab fa-twitter-square"></i></span>
-                </div>
+					<span><i class="fab fa-facebook-square"></i></span>
+					<span><i class="fab fa-google-plus-square"></i></span>
+					<span><i class="fab fa-twitter-square"></i></span>
+				</div>
+			</div>
   
  
 <div class="card-body">
                 <form method="POST" action="salvar.php">    
-                   <?php include('errors.php');?>
+            
                 <input type="hidden">
                 <label class="control-label">Nome</label><br>
                 <div class="input-group form-group">
