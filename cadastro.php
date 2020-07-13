@@ -44,7 +44,8 @@
   
  
 <div class="card-body">
-                <form method="POST" action="salvar.php">       
+                <form method="POST" action="salvar.php">      
+                <input type="hidden">
                 <label class="control-label">Nome</label><br>
                 <div class="input-group form-group">
                 <div class="input-group-prepend">
